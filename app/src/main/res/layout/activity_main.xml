@@ -17,7 +17,13 @@
             android:layout_marginLeft="3dp"
             android:orientation="horizontal">
 
-            <TextView
+            <Spinner
+                android:id="@+id/videoSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"/>
+
+           <!-- <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gallery"
@@ -29,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_down_24"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"/>-->
 
         </LinearLayout>
 
