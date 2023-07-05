@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class VideoAdapter(private val videos : List<VideoModal>) :
+class VideoAdapter() :
     RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
+
+    private val videoList: MutableList<VideoModal> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.gallery_item, parent, false)
@@ -19,11 +21,11 @@ class VideoAdapter(private val videos : List<VideoModal>) :
     }
 
     override fun getItemCount(): Int {
-        return videos.size
+        return videoList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val video = videos[position]
+        val video = videoList[position]
         val long_to_milli = video.duration / 1000
         val minute = (long_to_milli % 3600) / 60
         val second = long_to_milli % 60
@@ -66,5 +68,13 @@ class VideoAdapter(private val videos : List<VideoModal>) :
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val videoThumbnail: ImageView = view.findViewById(R.id.video_thumbnail)
         val videoDuration: TextView = view.findViewById(R.id.video_duration)
+    }
+
+    fun loadData(videos : List<VideoModal>) {
+
+        videoList.clear()
+        videoList.addAll(videos)
+        notifyDataSetChanged()
+
     }
 }
